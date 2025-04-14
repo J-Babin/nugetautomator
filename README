@@ -1,0 +1,88 @@
+# NuGet Dependency Downloader 📦
+
+Un outil PowerShell pour analyser et télécharger récursivement les dépendances de packages NuGet.
+
+![PowerShell](https://img.shields.io/badge/PowerShell-5.1+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+
+## 🌟 Fonctionnalités
+
+- ✅ **Analyse récursive** des dépendances de packages NuGet
+- 📊 **Détection des doublons** pour éviter les boucles infinies
+- 📁 **Téléchargement automatique** de packages et leurs dépendances
+- ⏱️ **Délai paramétrable** entre les requêtes pour éviter les limitations d'API
+- 🎨 **Interface colorée** pour une meilleure lisibilité
+
+## 📋 Prérequis
+
+- PowerShell 5.1 ou supérieur
+- Connexion Internet pour accéder à nuget.org
+
+## 🚀 Installation
+
+1. Clonez ce dépôt ou téléchargez le fichier `Get-NuGetDependencies.ps1`
+2. Importez le module dans votre session PowerShell :
+
+```powershell
+. .\Get-NuGetDependencies.ps1
+```
+
+## 📖 Utilisation
+
+### Analyser les dépendances d'un package
+
+```powershell
+Get-NuGetDependencies -PackageName "NUnit"
+```
+
+### Analyser une version spécifique
+
+```powershell
+Get-NuGetDependencies -PackageName "NUnit" -Version "3.13.3"
+```
+
+### Télécharger un package et ses dépendances
+
+```powershell
+Get-NuGetDependencies -PackageName "NUnit" -DownloadPackages -DownloadPath "C:\Temp\NuGetPackages"
+```
+
+### Ajouter un délai entre les requêtes
+
+```powershell
+Get-NuGetDependencies -PackageName "NUnit" -DelaySeconds 2 -DownloadPackages
+```
+
+## 📝 Paramètres
+
+| Paramètre | Type | Description | Défaut |
+|-----------|------|-------------|--------|
+| `PackageName` | string | Nom du package NuGet à analyser | (Obligatoire) |
+| `Version` | string | Version spécifique du package | "" (dernière version) |
+| `DownloadPath` | string | Chemin où télécharger les packages | ".\NuGetPackages" |
+| `DownloadPackages` | switch | Activer le téléchargement des packages | $false |
+| `DelaySeconds` | int | Délai en secondes entre chaque requête | 0 |
+
+## 📸 Exemple de sortie
+
+
+![img](./doc/img-1.png)
+
+![img](./doc/img-2-download.png)
+
+
+## 🛠️ Personnalisation
+
+Vous pouvez facilement adapter ce script à vos besoins en modifiant les expressions régulières pour l'extraction des versions ou des dépendances, ou en ajoutant des fonctionnalités supplémentaires.
+
+## 📄 Licence
+
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
+
+## 🤝 Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à ouvrir une issue ou une pull request.
+
+---
+
+Développé avec ❤️ pour la communauté .NET
